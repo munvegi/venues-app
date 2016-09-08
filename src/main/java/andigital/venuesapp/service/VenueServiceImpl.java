@@ -12,6 +12,10 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// This is a good example of how a Service layer can decouple the presentation layers from the particularities of lower
+// level layers. In this case, the Foursquare API returns quite different responses when we make queries for getVenues
+// or getRecommendedVenues. Since we just need a list of venues, the service returns a list of venues (List<Venue>) in
+// both cases, so the presentation layers and views above don't need to change.
 
 @PropertySource("classpath:application.properties")
 @Service
