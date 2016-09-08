@@ -2,6 +2,7 @@ package andigital.venuesapp.service;
 
 import andigital.venuesapp.model.Venue;
 import andigital.venuesapp.model.VenueResponse;
+import andigital.venuesapp.model.recommended.Item;
 import andigital.venuesapp.model.recommended.RecommendedVenues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -58,9 +59,7 @@ public class VenueServiceImpl implements VenueService {
                 environment.getProperty("foursquare.version"),
                 location);
 
-        List<Venue> venues = recommendedVenues.getResponse().getGroups().get(0).getItems()
-                .stream().map(item -> item.getVenue()).collect(Collectors.toList());
-
-        return venues;
+        return recommendedVenues.getResponse().getGroups().get(0).getItems()
+                .stream().map(Item::getVenue).collect(Collectors.toList());
     }
 }

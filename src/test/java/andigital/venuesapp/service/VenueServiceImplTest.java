@@ -15,12 +15,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.core.env.Environment;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class VenueServiceImplTest {
@@ -54,7 +54,7 @@ public class VenueServiceImplTest {
         VenueResponse venueResponse = new VenueResponse();
         andigital.venuesapp.model.Response response = new andigital.venuesapp.model.Response();
         venueResponse.setResponse(response);
-        List<Venue> expectedVenues = Arrays.asList(new Venue());
+        List<Venue> expectedVenues = Collections.singletonList(new Venue());
         response.setVenues(expectedVenues);
 
         Mockito.when(restTemplate.getForObject(venuesURI, VenueResponse.class,
@@ -92,14 +92,13 @@ public class VenueServiceImplTest {
         Response response = new Response();
         recommendedVenues.setResponse(response);
         Group group = new Group();
-        List<Group> groups = Arrays.asList(group);
+        List<Group> groups = Collections.singletonList(group);
         response.setGroups(groups);
         Item item = new Item();
-        List<Item> items = Arrays.asList(item);
+        List<Item> items = Collections.singletonList(item);
         group.setItems(items);
-        item.setVenue(new Venue());
         List<Venue> expectedVenues = recommendedVenues.getResponse().getGroups().get(0).getItems()
-                .stream().map(anItem -> anItem.getVenue()).collect(Collectors.toList());
+                .stream().map(Item::getVenue).collect(Collectors.toList());
 
         Mockito.when(restTemplate.getForObject(venuesURI, RecommendedVenues.class,
                 clientId,

@@ -6,7 +6,6 @@ import andigital.venuesapp.service.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,7 +32,7 @@ public class VenueController {
 	 * Performs a venue search
  	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.POST)
-	public String doSearch(SearchForm searchForm, BindingResult result, ModelMap model) {
+	public String doSearch(SearchForm searchForm, ModelMap model) {
 
 		List<Venue> venues;
 

@@ -54,7 +54,7 @@ public class VenueControllerTest {
         Mockito.when(venueService.getRecommendedVenues(searchForm.getLocation())).thenReturn(venues);
 
         // When
-        String actual = venueController.doSearch(searchForm, null, model);
+        String actual = venueController.doSearch(searchForm, model);
 
         // Then
         Mockito.verify(venueService).getRecommendedVenues(searchForm.getLocation());
@@ -75,7 +75,7 @@ public class VenueControllerTest {
         Mockito.when(venueService.getVenues(searchForm.getLocation())).thenReturn(venues);
 
         // When
-        String actual = venueController.doSearch(searchForm, null, model);
+        String actual = venueController.doSearch(searchForm, model);
 
         // Then
         Mockito.verify(venueService).getVenues(searchForm.getLocation());
