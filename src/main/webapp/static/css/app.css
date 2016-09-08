@@ -1,0 +1,76 @@
+body {background: #FAEBD7; }
+
+h1 {
+    color: #008080;
+    margin:20px 0px 15px 0px;
+}
+
+.center {
+    margin: auto;
+    width: 70%;
+}
+
+.box h3{
+    color: #008080;
+    position:relative;
+    padding: 10px 0px 0px 10px;
+    margin:0px;
+    display: block;
+}
+.box {
+    width:70%;
+    height:200px;
+    background:#FFF;
+    margin:40px auto;
+}
+
+.box p {
+    font-size: 16px;
+    font-style: normal;
+    position: relative;
+}
+
+.floater {
+    float: right;
+}
+
+.inline {
+    display: inline;
+}
+
+.venueUrl {
+    font-size: 18px;
+    text-decoration: none;
+    color: #008080;
+    margin-left: 15px;
+}
+
+.box img {
+    float: left;
+    margin: 15px 15px 60px 15px;
+}
+
+.formInput {
+    width: 280px;
+    padding: 10px 10px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.checkBox {
+    font-size: 16px;
+    margin: 10px 0px 0px 10px;
+}
+
+
+
+/*==================================================
+ * Effect 1
+ * ===============================================*/
+.effect1{
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+       -moz-box-shadow: 0 10px 6px -6px #777;
+            box-shadow: 0 10px 6px -6px #777;
+}
