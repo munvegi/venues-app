@@ -1,6 +1,6 @@
 package andigital.venuesapp.controller;
 
-import andigital.venuesapp.model.SearchForm;
+import andigital.venuesapp.controller.form.SearchForm;
 import andigital.venuesapp.model.Venue;
 import andigital.venuesapp.service.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;

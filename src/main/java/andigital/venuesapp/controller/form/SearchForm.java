@@ -1,4 +1,4 @@
-package andigital.venuesapp.model;
+package andigital.venuesapp.controller.form;
 
 public class SearchForm {
 
