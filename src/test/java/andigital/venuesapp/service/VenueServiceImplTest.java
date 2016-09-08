@@ -1,6 +1,7 @@
 package andigital.venuesapp.service;
 
 import andigital.venuesapp.model.Venue;
+import andigital.venuesapp.model.VenueResponse;
 import andigital.venuesapp.model.recommended.Group;
 import andigital.venuesapp.model.recommended.Item;
 import andigital.venuesapp.model.recommended.RecommendedVenues;
@@ -32,6 +33,43 @@ public class VenueServiceImplTest {
 
     @Mock
     Environment environment;
+
+    @Test
+    public void getVenues() throws Exception {
+
+        // Given
+        String location = "London";
+        String baseURI = "baseURI";
+        String clientId = "clientId";
+        String clientSecret = "clientSecret";
+        String version = "version";
+
+        Mockito.when(environment.getProperty("foursquare.search.venues.base.uri")).thenReturn(baseURI);
+        Mockito.when(environment.getProperty("foursquare.client.id")).thenReturn(clientId);
+        Mockito.when(environment.getProperty("foursquare.client.secret")).thenReturn(clientSecret);
+        Mockito.when(environment.getProperty("foursquare.version")).thenReturn(version);
+
+        String venuesURI = baseURI + "?client_id={clientId}&client_secret={clientSecret}&v={version}&near={location}";
+
+        VenueResponse venueResponse = new VenueResponse();
+        andigital.venuesapp.model.Response response = new andigital.venuesapp.model.Response();
+        venueResponse.setResponse(response);
+        List<Venue> expectedVenues = Arrays.asList(new Venue());
+        response.setVenues(expectedVenues);
+
+        Mockito.when(restTemplate.getForObject(venuesURI, VenueResponse.class,
+                clientId,
+                clientSecret,
+                version,
+                location)).thenReturn(venueResponse);
+
+        // When
+        List<Venue> actual = venueService.getVenues("London");
+
+        // Then
+        Mockito.verify(restTemplate).getForObject(venuesURI, VenueResponse.class, clientId, clientSecret, version, location);
+        assertThat(actual, is(expectedVenues));
+    }
 
     @Test
     public void getRecommendedVenues() throws Exception {

@@ -1,6 +1,7 @@
 package andigital.venuesapp.service;
 
 import andigital.venuesapp.model.Venue;
+import andigital.venuesapp.model.VenueResponse;
 import andigital.venuesapp.model.recommended.RecommendedVenues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -22,6 +23,23 @@ public class VenueServiceImpl implements VenueService {
     @Autowired
     RestTemplate restTemplate;
 
+
+    @Override
+    public List<Venue> getVenues(String location) {
+
+        String baseURI = environment.getProperty("foursquare.search.venues.base.uri");
+        String venuesURI = baseURI + "?client_id={clientId}&client_secret={clientSecret}&v={version}&near={location}";
+        System.out.println("Making GET request to: " + venuesURI);
+
+        VenueResponse venueResponse = restTemplate.getForObject(venuesURI, VenueResponse.class,
+                environment.getProperty("foursquare.client.id"),
+                environment.getProperty("foursquare.client.secret"),
+                environment.getProperty("foursquare.version"),
+                location);
+
+        //Map<String, Object> venuesMap = restTemplate.getForObject(requestURI, LinkedHashMap.class);
+        return venueResponse.getResponse().getVenues();
+    }
 
     @Override
     public List<Venue> getRecommendedVenues(String location) {
