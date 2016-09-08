@@ -24,14 +24,11 @@ public class SearchForm {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (!(o instanceof SearchForm)) {
+            return false;
+        }
         SearchForm that = (SearchForm) o;
-
-        if (recommended != that.recommended) return false;
-        return location != null ? location.equals(that.location) : that.location == null;
-
+        return recommended == that.recommended && (location != null ? location.equals(that.location) : that.location == null);
     }
 
     @Override
