@@ -7,7 +7,6 @@ Technical exercise for ANDigital.
 This is a web application that integrates with the Foursquare API and allows you to search for a place by name
 and return the recommended or popular venues near that location. Optionally, the **Recommended** checkbox can be
 unchecked to search all the venues near the location, not just the recommended ones.
-The search for recommended venues is ordered by rating.
 
 
 ## Build & run
