@@ -7,7 +7,7 @@
     <groupId>andigital.venuesapp</groupId>
     <artifactId>venues-app</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <springframework.version>4.3.2.RELEASE</springframework.version>
@@ -87,7 +87,8 @@
                         <warSourceDirectory>src/main/webapp</warSourceDirectory>
                         <warName>venues-app</warName>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
-                        <outputDirectory>/Library/Tomcat/webapps/</outputDirectory> <!-- Copy war to Tomcat webapps folder -->
+                        <!-- Copy war to Tomcat webapps folder: Uncomment the line below and replace it with your own webapps folder. -->
+                        <!--<outputDirectory>/Library/Tomcat/webapps/</outputDirectory>-->
                     </configuration>
                 </plugin>
             </plugins>

@@ -13,7 +13,7 @@ The search for recommended venues is ordered by rating.
 ## Build & run
 
 Build the Maven project (*mvn install*) and deploy the generated war file on a Servlet 3.0 container like Tomcat 8.
-The **maven-war-plugin** in the Maven POM has an <outputDirectory> tag where you can insert the deployment
+The **maven-war-plugin** in the Maven POM has an *outputDirectory* tag where you can insert the deployment
 folder of your server for an automatic deploy. The war file name is **venues-app.war**.
 
 The web application path is **/venues-app**. Your application URL will look something like this:
